@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
-    public event Action<Enemy> Died;
-
     private Rigidbody _rigidbody;
     private Coroutine _currentCoroutine;
     private Vector3 _movementDirection;
@@ -14,6 +12,8 @@ public class Enemy : MonoBehaviour
     private float _lifeTime = 8f;
     private float _movementSpeed;
     private bool _isMoving = false;
+
+    public event Action<Enemy> Died;
 
     private void Awake()
     {

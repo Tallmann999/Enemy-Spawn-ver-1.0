@@ -9,26 +9,29 @@ public class Spawner : MonoBehaviour
 
     private Vector3 _movementDirection = Vector3.forward;
     private GenericObjectPooL<Enemy> _enemyPool;
+    private WaitForSeconds _currentWaitForSeconds;
+    private Coroutine _currentCoroutine;
     private int _enemyPoolSize = 15;
     private int _enemySpawnSize = 10;
-    private Coroutine _currentCoroutine;
+    private float _intervalBeforeCreation = 2f;
 
     private void Awake()
     {
         _enemyPool = new GenericObjectPooL<Enemy>(_prefab, _enemyPoolSize);
+        _currentWaitForSeconds = new WaitForSeconds(_intervalBeforeCreation);
     }
 
     private void Start()
     {
         if (_currentCoroutine != null)
         {
-            StopCoroutine(ÑreatingEnemyAtRandomPoint());
+            StopCoroutine(CreatingEnemyAtRandomPoint());
         }
 
-        _currentCoroutine = StartCoroutine(ÑreatingEnemyAtRandomPoint());
+        _currentCoroutine = StartCoroutine(CreatingEnemyAtRandomPoint());
     }
 
-    private IEnumerator ÑreatingEnemyAtRandomPoint()
+    private IEnumerator CreatingEnemyAtRandomPoint()
     {
         for (int i = 0; i < _enemySpawnSize; i++)
         {
@@ -37,7 +40,7 @@ public class Spawner : MonoBehaviour
             Transform spawnPoint = _points[Random.Range(0, _points.Length)];
             enemy.transform.position = spawnPoint.position;
             enemy.InitializeMovement(_movementDirection, _enemyMoveSpeed);
-            yield return new WaitForSeconds(2f);
+            yield return _currentWaitForSeconds;
         }
     }
 
