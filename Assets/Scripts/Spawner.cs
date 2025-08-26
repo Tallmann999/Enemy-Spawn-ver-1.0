@@ -20,35 +20,30 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        if (_currentCoroutine!=null)
+        if (_currentCoroutine != null)
         {
-            StopCoroutine(CreateRandomEnemySpawn());
+            StopCoroutine(ÑreatingEnemyAtRandomPoint());
         }
 
-        _currentCoroutine = StartCoroutine(CreateRandomEnemySpawn());       
+        _currentCoroutine = StartCoroutine(ÑreatingEnemyAtRandomPoint());
     }
 
-
-    private IEnumerator CreateRandomEnemySpawn()
+    private IEnumerator ÑreatingEnemyAtRandomPoint()
     {
         for (int i = 0; i < _enemySpawnSize; i++)
         {
             Enemy enemy = _enemyPool.GetObject();
+            enemy.Died += OnReturnPoolObject;
             Transform spawnPoint = _points[Random.Range(0, _points.Length)];
-
             enemy.transform.position = spawnPoint.position;
-            enemy.Move(_movementDirection, _enemyMoveSpeed);
-           
+            enemy.InitializeMovement(_movementDirection, _enemyMoveSpeed);
             yield return new WaitForSeconds(2f);
-            //StopCoroutine(ReturnPoolObjectPerSecond());
-           // 
         }
     }
 
-    private IEnumerator ReturnPoolObjectPerSecond(Enemy currentEnemy,float lifeTime)
+    private void OnReturnPoolObject(Enemy currentEnemy)
     {
-        // çàïóñê ýòîé êîðóòèíû ïîñëå ñìåðòè âðàãà
+        currentEnemy.Died -= OnReturnPoolObject;
         _enemyPool.ReturnObject(currentEnemy);
-        yield return new WaitForSeconds(lifeTime);
     }
 }

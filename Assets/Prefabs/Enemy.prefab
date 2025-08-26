@@ -2444,6 +2444,7 @@ GameObject:
   - component: {fileID: 3710211001067043749}
   - component: {fileID: 377708290928410572}
   - component: {fileID: 2642678302356467465}
+  - component: {fileID: 655605172322906895}
   - component: {fileID: 730042274608502783}
   m_Layer: 0
   m_Name: Enemy
@@ -2462,7 +2463,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0038567, y: 0, z: -1.866622}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8801421036310690953}
@@ -2479,7 +2480,7 @@ Animator:
   m_GameObject: {fileID: 8728124586518167555}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9637742a2276e21488855fb50343a4cc, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d61fc3238bc7c0a49a93f92b38ed7244, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2514,6 +2515,33 @@ CapsuleCollider:
   m_Height: 1.9928584
   m_Direction: 1
   m_Center: {x: 0.05267009, y: 1.0111661, z: 0}
+--- !u!54 &655605172322906895
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728124586518167555}
+  serializedVersion: 5
+  m_Mass: 20
+  m_LinearDamping: 0
+  m_AngularDamping: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &730042274608502783
 MonoBehaviour:
   m_ObjectHideFlags: 0

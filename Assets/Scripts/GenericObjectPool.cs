@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public class GenericObjectPooL<T> where T : Enemy
 {
     private T _prefab;
-
     private Queue<T> _pool = new Queue<T>();
 
     public GenericObjectPooL(T prefab, int initializeSize)
@@ -16,8 +15,6 @@ public class GenericObjectPooL<T> where T : Enemy
             T newObject = GameObject.Instantiate(prefab, Vector3.zero, Quaternion.identity);
             newObject.gameObject.SetActive(false);
             _pool.Enqueue(newObject);
-
-
         }
     }
 
@@ -25,7 +22,7 @@ public class GenericObjectPooL<T> where T : Enemy
     {
         if (_pool.Count == 0)
         {
-            T obj = GameObject.Instantiate(_prefab,Vector3.zero, Quaternion.identity);
+            T obj = GameObject.Instantiate(_prefab, Vector3.zero, Quaternion.identity);
             return obj;
         }
 
