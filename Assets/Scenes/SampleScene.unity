@@ -761,7 +761,7 @@ MonoBehaviour:
   - {fileID: 181841990}
   - {fileID: 1532878954}
   - {fileID: 870084813}
-  _prefab: {fileID: 730042274608502783, guid: 7a9639eb197fe6548b21ad4c6cfc53e7, type: 3}
+  _prefab: {fileID: 7300491832613329030, guid: 5eadb1c2d33cbae4788e3fd317e965eb, type: 3}
   _enemyMoveSpeed: 4
 --- !u!4 &2034735923
 Transform:
