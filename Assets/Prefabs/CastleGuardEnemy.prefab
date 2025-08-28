@@ -1131,7 +1131,7 @@ GameObject:
   - component: {fileID: 8287447822786460099}
   - component: {fileID: 7179588239015916347}
   - component: {fileID: 4040917056657769735}
-  - component: {fileID: 4293180420123625722}
+  - component: {fileID: -7852487769476505919}
   m_Layer: 0
   m_Name: CastleGuardEnemy
   m_TagString: Untagged
@@ -1228,7 +1228,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4293180420123625722
+--- !u!114 &-7852487769476505919
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1237,9 +1237,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6848807532011068860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12358f04b9a1f2846a46320f171c1060, type: 3}
+  m_Script: {fileID: 11500000, guid: e9732dd19bc4b084994840426a25aee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 2
 --- !u!1 &7168330499641298425
 GameObject:
   m_ObjectHideFlags: 0

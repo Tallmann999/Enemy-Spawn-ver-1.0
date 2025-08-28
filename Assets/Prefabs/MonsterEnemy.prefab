@@ -2445,7 +2445,7 @@ GameObject:
   - component: {fileID: 377708290928410572}
   - component: {fileID: 2642678302356467465}
   - component: {fileID: 655605172322906895}
-  - component: {fileID: 730042274608502783}
+  - component: {fileID: 6194183495346638980}
   m_Layer: 0
   m_Name: MonsterEnemy
   m_TagString: Untagged
@@ -2523,7 +2523,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8728124586518167555}
   serializedVersion: 5
-  m_Mass: 20
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2542,7 +2542,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &730042274608502783
+--- !u!114 &6194183495346638980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2551,7 +2551,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8728124586518167555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12358f04b9a1f2846a46320f171c1060, type: 3}
+  m_Script: {fileID: 11500000, guid: 517024a327fdaf0439bd3ea072b2edf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8835554118148806342

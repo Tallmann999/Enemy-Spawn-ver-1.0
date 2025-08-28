@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 6757154274090367222}
   - component: {fileID: 2036192452130888089}
   - component: {fileID: 6331450597636520512}
-  - component: {fileID: 7300491832613329030}
+  - component: {fileID: 6920262362882883208}
   m_Layer: 0
   m_Name: GirlEnemy
   m_TagString: Untagged
@@ -879,7 +879,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &7300491832613329030
+--- !u!114 &6920262362882883208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -888,9 +888,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2952213786562623636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12358f04b9a1f2846a46320f171c1060, type: 3}
+  m_Script: {fileID: 11500000, guid: 3973724ff3e383e42a9d2fa8287d063b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 1
 --- !u!1 &3208970964641101881
 GameObject:
   m_ObjectHideFlags: 0
