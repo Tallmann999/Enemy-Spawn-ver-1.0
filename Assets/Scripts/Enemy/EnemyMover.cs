@@ -1,32 +1,14 @@
 using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(Rigidbody))]
 public class EnemyMover : MonoBehaviour
 {
     private Transform _target;
-    private Rigidbody _rigidbody;
+    //private Rigidbody _rigidbody;
     private  float _movementSpeed;
-
+    private Vector3 direction;
     protected bool _isMoving = false;
+    private Enemy _currentEnemy;
 
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    //public void Initialize()
-    //{
-    //    //_movementDirection = target;
-    //    //_movementSpeed = speed;
-    //    _isMoving = true;
-    //    //HasMove?.Invoke(_isMoving);
-    //}
-
-    private void Update()
-    {
-        //if (transform.position == _target.position)
-        //{
-        //}
-    }
 }

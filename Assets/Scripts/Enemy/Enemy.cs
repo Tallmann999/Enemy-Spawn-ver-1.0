@@ -4,24 +4,24 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody))]
-public  abstract class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField]protected EnemyType _type;
+    [SerializeField] protected EnemyType _type;
     protected Coroutine _currentCoroutine;
     protected WaitForSeconds _currentWaitForSeconds;
     protected float _lifeTime = 8f;
-   
-    public EnemyType Type=> _type;
+    public EnemyType Type => _type;
     public event Action<Enemy> Died;
-    public void SetType(EnemyType type) => _type = type;
-
-    protected virtual  void Awake()
+   
+    protected virtual void Awake()
     {
         _currentWaitForSeconds = new WaitForSeconds(_lifeTime);
     }
+   
 
     protected void Start()
     {
+
         if (_currentCoroutine != null)
         {
             StopCoroutine(LifeTimer());
@@ -34,14 +34,5 @@ public  abstract class Enemy : MonoBehaviour
     {
         yield return _currentWaitForSeconds;
         Died?.Invoke(this);
-    }
-
-    public virtual void ResetEnemy()
-    {
-        if (_currentCoroutine != null)
-        {
-            StopCoroutine(_currentCoroutine);
-        }
-        _currentCoroutine = null;
     }
 }

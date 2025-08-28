@@ -6,9 +6,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private SpawnPointConfig[] _configSpawnPoints;
-    [SerializeField] private Enemy[] _prefabs;
 
-    //private GenericObjectPooL<Enemy>[] _enemyPools;
     private Coroutine[] _spawnCoroutines;
     private Dictionary<EnemyType, GenericObjectPooL<Enemy>> _enemyPools;
 
@@ -29,36 +27,25 @@ public class Spawner : MonoBehaviour
 
         foreach (var config in _configSpawnPoints)
         {
-            Enemy prefab = GetPrefabForType(config.EnemyType);
-
+            Enemy prefab = GetPrefabForType(config.Prefab,config.EnemyType);
+            //prefab.SetTarget(config.Target);
             if (prefab!=null&& !_enemyPools.ContainsKey(config.EnemyType))
             {
                 _enemyPools[config.EnemyType] = new GenericObjectPooL<Enemy>(prefab,config.InitialPoolSize);
             }
-        }
-        //int enumLength = Enum.GetValues(typeof(EnemyType)).Length;
-        //int spawnCount = 0;
-
-        //for (int i = 0; i < _enemyPools.Length; i++)
-        //{
-        //    spawnCount = _configSpawnPoints[i].InitialSpawnSize;
-        //    _enemyPools[i] = new GenericObjectPooL<Enemy>(_prefabs[i], spawnCount);
-
-        //}
+        }      
     }
 
-    private Enemy GetPrefabForType(EnemyType type)
-    {
-        foreach (var prefab in _prefabs)
-        {
-            if (prefab.Type == type)
+    private Enemy GetPrefabForType(Enemy currentEnemy, EnemyType type)
+    {       
+            if (currentEnemy.Type == type)
             {
-                return prefab;
+                return currentEnemy;
             }
-        }
+        
         Debug.LogError($"No prefab found for enemy type: {type}");
         return null;
-    }
+    }  
 
     private void StartAllSpawners()
     {
@@ -94,26 +81,6 @@ public class Spawner : MonoBehaviour
 
        
     }
-
-    //private GenericObjectPooL<Enemy> GetPoolForType(EnemyType type)
-    //{
-    //    if (_enemyPools == null)
-    //    {
-    //        Debug.LogError("Enemy pools array is not initialized!");
-    //        return null;
-    //    }
-
-    //    int typeIndex = (int)type;
-
-    //    if (typeIndex < 0 || typeIndex >= _enemyPools.Length)
-    //    {
-    //        Debug.LogError($"Invalid enemy type index: {typeIndex} for type: {type}");
-    //        return null;
-    //    }
-
-    //    return _enemyPools[typeIndex];
-    //}
-
     private void OnEnemyDied(Enemy enemy)
     {
         if (_enemyPools.ContainsKey(enemy.Type))

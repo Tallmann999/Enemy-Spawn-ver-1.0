@@ -555,7 +555,7 @@ Transform:
   m_GameObject: {fileID: 510765949}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3, y: 1.9, z: 89.1}
+  m_LocalPosition: {x: -1.3, y: 3.96, z: 89.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -738,23 +738,22 @@ MonoBehaviour:
   _configSpawnPoints:
   - SpawnPoint: {fileID: 528969489}
     EnemyType: 0
-    SpawnInterval: 0.2
-    InitialPoolSize: 10
+    Prefab: {fileID: 6194183495346638980, guid: 7a9639eb197fe6548b21ad4c6cfc53e7, type: 3}
+    SpawnInterval: 2
+    InitialPoolSize: 20
     InitialSpawnSize: 10
   - SpawnPoint: {fileID: 181841990}
     EnemyType: 1
-    SpawnInterval: 5
-    InitialPoolSize: 10
-    InitialSpawnSize: 5
+    Prefab: {fileID: 6920262362882883208, guid: 5eadb1c2d33cbae4788e3fd317e965eb, type: 3}
+    SpawnInterval: 3
+    InitialPoolSize: 20
+    InitialSpawnSize: 10
   - SpawnPoint: {fileID: 870084813}
     EnemyType: 2
-    SpawnInterval: 4
-    InitialPoolSize: 10
-    InitialSpawnSize: 8
-  _prefabs:
-  - {fileID: 6194183495346638980, guid: 7a9639eb197fe6548b21ad4c6cfc53e7, type: 3}
-  - {fileID: 6920262362882883208, guid: 5eadb1c2d33cbae4788e3fd317e965eb, type: 3}
-  - {fileID: -7852487769476505919, guid: 27c86ce0f61ffe241aaa66709e760015, type: 3}
+    Prefab: {fileID: -7852487769476505919, guid: 27c86ce0f61ffe241aaa66709e760015, type: 3}
+    SpawnInterval: 2
+    InitialPoolSize: 20
+    InitialSpawnSize: 10
 --- !u!4 &2034735923
 Transform:
   m_ObjectHideFlags: 0
