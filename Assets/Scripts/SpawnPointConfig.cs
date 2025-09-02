@@ -6,7 +6,7 @@ public class SpawnPointConfig
     public Transform SpawnPoint;     
     public EnemyType EnemyType;
     public Enemy Prefab;
-    //public Transform Target;
+    public Target Target;
 
     //public MovingTarget MovingTarget;   !!!! ¬озможно он нужен чтоб указать дл€ каждого
     //отдельного врага точку куда надо двигатьс€

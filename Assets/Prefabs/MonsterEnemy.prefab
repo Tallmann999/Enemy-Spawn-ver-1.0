@@ -2446,6 +2446,7 @@ GameObject:
   - component: {fileID: 2642678302356467465}
   - component: {fileID: 655605172322906895}
   - component: {fileID: 6194183495346638980}
+  - component: {fileID: 7123603799460590338}
   m_Layer: 0
   m_Name: MonsterEnemy
   m_TagString: Untagged
@@ -2462,7 +2463,7 @@ Transform:
   m_GameObject: {fileID: 8728124586518167555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0038567, y: 0, z: -1.866622}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2512,9 +2513,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.4473299
-  m_Height: 1.9928584
+  m_Height: 2.0011938
   m_Direction: 1
-  m_Center: {x: 0.05267009, y: 1.0111661, z: 0}
+  m_Center: {x: 0.0526701, y: 1.03, z: 0}
 --- !u!54 &655605172322906895
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2525,7 +2526,7 @@ Rigidbody:
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2540,7 +2541,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &6194183495346638980
 MonoBehaviour:
@@ -2555,6 +2556,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
+  _lifeTime: 20
+--- !u!114 &7123603799460590338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728124586518167555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e20c5a8394e83043a3c01218cb221bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementSpeed: 0.1
+  _rotationSpeed: 10
 --- !u!1 &8835554118148806342
 GameObject:
   m_ObjectHideFlags: 0

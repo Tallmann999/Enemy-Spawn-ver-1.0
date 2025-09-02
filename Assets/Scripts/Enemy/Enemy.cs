@@ -1,18 +1,17 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-[RequireComponent(typeof(Rigidbody))]
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected EnemyType _type;
+    [SerializeField] protected float _lifeTime = 20f;
     protected Coroutine _currentCoroutine;
     protected WaitForSeconds _currentWaitForSeconds;
-    protected float _lifeTime = 8f;
     public EnemyType Type => _type;
     public event Action<Enemy> Died;
-   
+    public event Action<Target> TargetDirection;
+
     protected virtual void Awake()
     {
         _currentWaitForSeconds = new WaitForSeconds(_lifeTime);
@@ -29,10 +28,16 @@ public abstract class Enemy : MonoBehaviour
 
         _currentCoroutine = StartCoroutine(LifeTimer());
     }
-
+       
     protected virtual IEnumerator LifeTimer()
     {
         yield return _currentWaitForSeconds;
         Died?.Invoke(this);
+    }
+
+    public void SetTarget(Target target)
+    {
+        Debug.Log($"Setting target for {gameObject.name}: {(target != null ? target.name : "null")}");
+        TargetDirection?.Invoke(target);
     }
 }
