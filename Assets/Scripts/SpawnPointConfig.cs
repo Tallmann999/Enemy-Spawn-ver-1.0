@@ -4,7 +4,6 @@ using UnityEngine;
 public class SpawnPointConfig
 {
     public Transform SpawnPoint;     
-    public EnemyType EnemyType;
     public Enemy Prefab;
     public Target Target;
     public float SpawnInterval = 2f;  

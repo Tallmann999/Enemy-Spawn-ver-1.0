@@ -39,7 +39,8 @@ public class EnemyMover : MonoBehaviour
 
     private void MoveToTarget()
     {
-        if (_target == null) return;
+        if (_target == null)
+            return;
 
         _direction = (_target.position - transform.position).normalized;
         Vector3 movement = _direction * _movementSpeed * Time.fixedDeltaTime;

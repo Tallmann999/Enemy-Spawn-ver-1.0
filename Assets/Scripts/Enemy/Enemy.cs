@@ -5,15 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyMover))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyType _type;
+    [SerializeField]private EnemyType _type;
     [SerializeField] private float _lifeTime = 10f;
 
     private EnemyMover _enemyMover;
     private Coroutine _currentCoroutine;
     private WaitForSeconds _currentWaitForSeconds;
 
-    public EnemyType Type => _type;
     public event Action<Enemy> Died;
+
+    public EnemyType Type => _type;
 
     private void Awake()
     {

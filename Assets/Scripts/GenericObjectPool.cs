@@ -20,20 +20,24 @@ public class GenericObjectPooL<T> where T : Enemy
 
     public T GetObject()
     {
+        T obj;
+
         if (_pool.Count == 0)
         {
-            T obj = GameObject.Instantiate(_prefab, Vector3.zero, Quaternion.identity);
-            return obj;
+            obj = GameObject.Instantiate(_prefab, Vector3.zero, Quaternion.identity);
+        }
+        else
+        {
+            obj = _pool.Dequeue();
         }
 
-        T pooledObj = _pool.Dequeue();
-        pooledObj.gameObject.SetActive(true);
-        return pooledObj;
+        obj.gameObject.SetActive(true);
+        return obj;
     }
 
     public void ReturnObject(T poolObject)
     {
-        _pool.Enqueue(poolObject);
         poolObject.gameObject.SetActive(false);
+        _pool.Enqueue(poolObject);
     }
 }

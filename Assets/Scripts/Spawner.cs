@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,82 +5,53 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private SpawnPointConfig[] _configSpawnPoints;
 
-    private Coroutine[] _spawnCoroutines;
     private Dictionary<EnemyType, GenericObjectPooL<Enemy>> _enemyPools;
+    private readonly List<SpawnPoint> _spawnPoints = new List<SpawnPoint>();
 
     private void Awake()
     {
         InitializePools();
+        InitializeSpawnPoints();
     }
 
     private void Start()
     {
-
         StartAllSpawners();
     }
 
     private void InitializePools()
     {
         _enemyPools = new Dictionary<EnemyType, GenericObjectPooL<Enemy>>();
-        _spawnCoroutines = new Coroutine[_configSpawnPoints.Length];
 
         foreach (var config in _configSpawnPoints)
         {
-            Enemy prefab = GetPrefabForType(config.Prefab, config.EnemyType);
-
-            if (prefab != null && !_enemyPools.ContainsKey(config.EnemyType))
+            if (!_enemyPools.ContainsKey(config.Prefab.Type))
             {
-                _enemyPools[config.EnemyType] = new GenericObjectPooL<Enemy>(prefab, config.InitialPoolSize);
+                _enemyPools[config.Prefab.Type] =
+                    new GenericObjectPooL<Enemy>(config.Prefab, config.InitialPoolSize);
             }
         }
     }
 
-    private Enemy GetPrefabForType(Enemy currentEnemy, EnemyType type)
+    private void InitializeSpawnPoints()
     {
-        if (currentEnemy.Type == type)
+        foreach (var config in _configSpawnPoints)
         {
-            return currentEnemy;
-        }
+            GenericObjectPooL<Enemy> pool = _enemyPools[config.Prefab.Type];
+            GameObject currentPoint = config.SpawnPoint.gameObject;
+            SpawnPoint spawnPoint = currentPoint.GetComponent<SpawnPoint>();
 
-        return null;
+            if (spawnPoint == null)
+                spawnPoint = currentPoint.AddComponent<SpawnPoint>();
+
+            spawnPoint.Init(config, pool);
+            _spawnPoints.Add(spawnPoint);
+        }
     }
 
     private void StartAllSpawners()
-    {     
-        for (int i = 0; i < _configSpawnPoints.Length; i++)
-        {
-            if (_spawnCoroutines[i]!= null)
-            {
-                StopCoroutine(_spawnCoroutines[i]);
-            }
-
-            _spawnCoroutines[i] = StartCoroutine(SpawnFromPoint(_configSpawnPoints[i]));
-        }
-    }
-
-    private IEnumerator SpawnFromPoint(SpawnPointConfig config)
-    {      
-        GenericObjectPooL<Enemy> pool = _enemyPools[config.EnemyType];
-        WaitForSeconds wait = new WaitForSeconds(config.SpawnInterval);
-
-        for (int i = 0; i < config.InitialSpawnSize; i++)
-        {
-            Enemy enemy = pool.GetObject();
-            enemy.Died += OnEnemyDied;
-            enemy.SetTarget(config.Target); 
-            enemy.transform.position = config.SpawnPoint.position;
-            enemy.transform.rotation = config.SpawnPoint.rotation;
-
-            yield return wait;
-        }
-    }
-
-    private void OnEnemyDied(Enemy enemy)
     {
-        if (_enemyPools.ContainsKey(enemy.Type))
-        {
-            enemy.Died -= OnEnemyDied;
-            _enemyPools[enemy.Type].ReturnObject(enemy);
-        }
+        foreach (var spawnPoint in _spawnPoints)
+            spawnPoint.StartSpawning();
     }
 }
