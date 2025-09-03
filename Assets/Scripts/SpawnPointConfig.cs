@@ -7,12 +7,7 @@ public class SpawnPointConfig
     public EnemyType EnemyType;
     public Enemy Prefab;
     public Target Target;
-
-    //public MovingTarget MovingTarget;   !!!! ¬озможно он нужен чтоб указать дл€ каждого
-    //отдельного врага точку куда надо двигатьс€
-
     public float SpawnInterval = 2f;  
-    //public float EnemySpeed = 5f;    
     public int InitialPoolSize = 10;  
     public int InitialSpawnSize = 15;  
 }

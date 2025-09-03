@@ -2,25 +2,27 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+[RequireComponent(typeof(EnemyMover))]
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] protected EnemyType _type;
-    [SerializeField] protected float _lifeTime = 20f;
-    protected Coroutine _currentCoroutine;
-    protected WaitForSeconds _currentWaitForSeconds;
+    [SerializeField] private EnemyType _type;
+    [SerializeField] private float _lifeTime = 10f;
+
+    private EnemyMover _enemyMover;
+    private Coroutine _currentCoroutine;
+    private WaitForSeconds _currentWaitForSeconds;
+
     public EnemyType Type => _type;
     public event Action<Enemy> Died;
-    public event Action<Target> TargetDirection;
 
-    protected virtual void Awake()
+    private void Awake()
     {
         _currentWaitForSeconds = new WaitForSeconds(_lifeTime);
+        _enemyMover = GetComponent<EnemyMover>();
     }
-   
 
-    protected void Start()
+    private void Start()
     {
-
         if (_currentCoroutine != null)
         {
             StopCoroutine(LifeTimer());
@@ -28,16 +30,15 @@ public abstract class Enemy : MonoBehaviour
 
         _currentCoroutine = StartCoroutine(LifeTimer());
     }
-       
-    protected virtual IEnumerator LifeTimer()
-    {
-        yield return _currentWaitForSeconds;
-        Died?.Invoke(this);
-    }
 
     public void SetTarget(Target target)
     {
-        Debug.Log($"Setting target for {gameObject.name}: {(target != null ? target.name : "null")}");
-        TargetDirection?.Invoke(target);
+        _enemyMover.SetTarget(target.transform);
+    }
+
+    private IEnumerator LifeTimer()
+    {
+        yield return _currentWaitForSeconds;
+        Died?.Invoke(this);
     }
 }

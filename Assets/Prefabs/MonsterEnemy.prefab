@@ -2445,8 +2445,8 @@ GameObject:
   - component: {fileID: 377708290928410572}
   - component: {fileID: 2642678302356467465}
   - component: {fileID: 655605172322906895}
-  - component: {fileID: 6194183495346638980}
   - component: {fileID: 7123603799460590338}
+  - component: {fileID: -7347722066568486877}
   m_Layer: 0
   m_Name: MonsterEnemy
   m_TagString: Untagged
@@ -2543,20 +2543,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &6194183495346638980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8728124586518167555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517024a327fdaf0439bd3ea072b2edf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 0
-  _lifeTime: 20
 --- !u!114 &7123603799460590338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,8 +2555,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e20c5a8394e83043a3c01218cb221bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 0.1
+  _movementSpeed: 10
   _rotationSpeed: 10
+--- !u!114 &-7347722066568486877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8728124586518167555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12358f04b9a1f2846a46320f171c1060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _lifeTime: 10
 --- !u!1 &8835554118148806342
 GameObject:
   m_ObjectHideFlags: 0
